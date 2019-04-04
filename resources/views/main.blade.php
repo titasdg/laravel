@@ -28,7 +28,9 @@
       <!-- END section -->
       <section class="site-section py-sm">
     <div class="container">
+       
     @yield('content')
+ 
     </div>
      @include('partials/side')
 
