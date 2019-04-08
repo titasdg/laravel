@@ -16,8 +16,8 @@
                 @foreach ($posts as $post)
                 
                   <div class="col-md-6">
-                  <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
-                    <img src="{!!asset('images/img_5.jpg')!!}" alt="Image placeholder">
+                  <a href="/post/{{$post->id}}" class="blog-entry element-animate" data-animate-effect="fadeIn">
+                  <img src="{{asset('storage/'.$post->image)}}" alt="Image placeholder">
                     <div class="blog-content-body">
                       <div class="post-meta">
                         <span class="author mr-2"><img src="{!!asset('images/person_1.jpg')!!}" alt="Colorlib"> Colorlib</span>&bullet;

@@ -13,7 +13,7 @@
     <div class="row blog-entries">
       <div class="col-md-12 col-lg-8 main-content">
         <div class="row">
-                <form action="store" method="POST">
+                <form action="store" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if ($errors->any())
                     <div class="alert alert-danger">
@@ -30,9 +30,13 @@
                             <fieldset >
                                 <textarea rows="5" cols="70" type="text" name="about" placeholder="Text"></textarea>
                             </fieldset>
+                            <fieldset>
+                                    <input type="file" name="image" >
+                            </fieldset>
                             <fieldset >
                             <button type = "submit" name="submit">Submit</button>
                             </fieldset>
+                           
                         </form>
         </div>
 
