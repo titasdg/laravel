@@ -15,3 +15,9 @@ Route::get('/', 'PostController@index');
 Route::get('/create-post', 'PostController@create_post');
 Route::post('/store', 'PostController@store');
 Route::get('/post/{post}', 'PostController@show_post');
+Route::get('/update-post/{post}', 'PostController@update_post');
+Route::patch('/update-post/store-update/{post}', 'PostController@store_update');
+Route::get('/delete-validation/{post}', 'PostController@delete_validation');
+Route::get('/delete-validation/delete/{post}', 'PostController@delete');
+Route::get('/search', 'PostController@search');
+

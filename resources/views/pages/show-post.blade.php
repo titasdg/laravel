@@ -11,8 +11,8 @@
     <div class="row blog-entries">
       <div class="col-md-12 col-lg-8 main-content">
         <div class="row">
-
-        <p>{{$post->image}}</p>
+          <img src="{{asset('storage/'.$post->image)}}" alt="Image placeholder">
+        <p>{{$post->content}}</p>
           
 
               </div>

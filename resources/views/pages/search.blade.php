@@ -7,13 +7,14 @@
        
           <div class="row">
             <div class="col-md-6">
-                <p><a href="/create-post" class="btn btn-primary btn-sm rounded">Create new post</a></p>
-              <h2 class="mb-4">Latest Posts </h2>
+              <h2 class="mb-4">Searched posts </h2>
             </div>
           </div>
           <div class="row blog-entries">
             <div class="col-md-12 col-lg-8 main-content">
               <div class="row">
+                  @if(count($posts)!=0)
+
                 @foreach ($posts as $post)
                 
                   <div class="col-md-6">
@@ -33,7 +34,9 @@
                   </a>
                 </div>
                 @endforeach
-                
+                @else
+                <h2>Postu tokiu vardu nerasta</h2>
+                @endif
             
               </div>
 
