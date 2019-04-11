@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 use File;
 use Input;
 class PostController extends Controller
@@ -20,7 +21,9 @@ class PostController extends Controller
         return view('pages.show-post',compact('post'));
     }
     public function create_post(){
-        return view('pages.create-post');
+        $category=Category::all();
+        return view('pages.create-post',compact('category'));
+
     }
     public function delete_validation(Post $post){
         return view('pages.delete-post',compact('post'));
@@ -28,10 +31,12 @@ class PostController extends Controller
     public function update_post(Post $post){
         return view('pages.update-post',compact('post'));
     }
+   
     public function store(Request $request){
         $validate=$request->validate([
             'title'=>'required|max:255',
             'about'=>'required|max:1100',
+            'category_id'=>'required',
             'image'=>'mimes:jpeg,jpg,png,gif|required|max:10000'
 
         ]);
@@ -41,7 +46,8 @@ class PostController extends Controller
         $post= Post::create([
             'title' => request('title'),
             'content' => request('about'),
-            'image' => $filename
+            'image' => $filename,
+            'category_id' => request('category_id')
         ]);
 
         return redirect('/');

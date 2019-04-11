@@ -21,3 +21,6 @@ Route::get('/delete-validation/{post}', 'PostController@delete_validation');
 Route::get('/delete-validation/delete/{post}', 'PostController@delete');
 Route::get('/search', 'PostController@search');
 
+Route::get('/create-category', 'CategoriesController@create');
+Route::post('/storeCategory', 'CategoriesController@storeCategory');
+

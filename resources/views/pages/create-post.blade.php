@@ -33,6 +33,14 @@
                             <fieldset>
                                     <input type="file" name="image" >
                             </fieldset>
+                            <fieldset>
+                                    <select name="category_id">
+                                        <option selected disabled>Select category</option>
+                                        @foreach($category as $cate)
+                                    <option value="{{$cate->id}}">{{$cate->name}}</option>
+                                    @endforeach
+                                        </select>
+                            </fieldset>
                             <fieldset >
                             <button type = "submit" name="submit">Submit</button>
                             </fieldset>
