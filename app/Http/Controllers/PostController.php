@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
 use File;
-use Input;
+use Illuminate\Support\Facades\Input;
+use View;
 class PostController extends Controller
 {
     public function index(){
        // $posts=Post::all();//gaunu duomenis
+      
         $posts=Post::paginate(8);
-        return view('pages.home',compact('posts'));//siunciu i sablona
+        return view('pages.home',compact(['posts']));//siunciu i sablona
     }
     //public function {
        // $posts=Post::paginate(2);
@@ -78,10 +80,16 @@ class PostController extends Controller
         $post->delete();
         return redirect('/');
     }
-    public function search (){
-        $input = Request::input('search');
-        $input=Input::where();
-        $post = Post::where('title','LIKE','%'.$input.'%')->get()->paginate(8);
-        return view('pages.home',compact('posts'));//siunciu i sablona
+    public function search (Request $request){
+       
+        $input = request('search');
+        $posts = Post::where('title','LIKE','%'.$input.'%')->paginate(8);
+        //return view('pages.search',compact('posts'));//siunciu i sablona
+        return dd($request->search);
+    }
+    public function category ($id){
+        
+        $posts = Post::where('category_id','LIKE',$id)->paginate(8);
+        return view('pages.posts-by-category',compact('posts'));
     }
 }

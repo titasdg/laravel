@@ -72,7 +72,7 @@
                 <h3 class="heading">Categories</h3>
                 <ul class="categories">
                   @foreach ($category as $cate)
-                <li><a href="#">{{$cate->name}}</a></li>  
+                <li><a href="/category/{{$cate->id}}">{{$cate->name}}</a></li>  
                   @endforeach
                   
                 

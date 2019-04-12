@@ -14,7 +14,7 @@
               
               <div class="col-3 search-top">
                 <!-- <a href="#"><span class="fa fa-search"></span></a> -->
-                <form action="#" class="search-top-form">
+                <form action="search" method="POST" class="search-top-form">
                   
                   <a href="/search"><span class="icon fa fa-search"></span></a>
                   <input type="text" id="s" name="search" placeholder="Type keyword to search...">

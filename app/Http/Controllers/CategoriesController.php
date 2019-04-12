@@ -14,6 +14,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $category=Category::all();
+        
         return view('partials.side',compact('category'));
     }
 

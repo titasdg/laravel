@@ -23,4 +23,5 @@ Route::get('/search', 'PostController@search');
 
 Route::get('/create-category', 'CategoriesController@create');
 Route::post('/storeCategory', 'CategoriesController@storeCategory');
+Route::get('/category/{id}', 'PostController@category');
 
