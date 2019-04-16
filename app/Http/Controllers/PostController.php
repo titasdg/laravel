@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Comment;
 use File;
 use Illuminate\Support\Facades\Input;
 use View;
@@ -20,7 +21,10 @@ class PostController extends Controller
        // $posts=Post::paginate(2);
     //}
     public function show_post(Post $post){
-        return view('pages.show-post',compact('post'));
+        $comments = Comment::where('post_id','LIKE',$post->id)->get();
+        //return view('pages.posts-by-category',compact('posts'));
+        return view('pages.show-post',compact(['post','comments']));
+        //return dd($comments);
     }
     public function create_post(){
         $category=Category::all();
@@ -82,14 +86,15 @@ class PostController extends Controller
     }
     public function search (Request $request){
        
-        $input = request('search');
+        $input = request::input('search');
         $posts = Post::where('title','LIKE','%'.$input.'%')->paginate(8);
-        //return view('pages.search',compact('posts'));//siunciu i sablona
-        return dd($request->search);
+        return view('pages.search',compact('posts'));//siunciu i sablona
+        //return dd($input);
     }
     public function category ($id){
         
         $posts = Post::where('category_id','LIKE',$id)->paginate(8);
         return view('pages.posts-by-category',compact('posts'));
+       
     }
 }

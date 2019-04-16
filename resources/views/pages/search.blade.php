@@ -4,7 +4,7 @@
 
 @section('content')
 
-       
+       @if(count($posts)!=0)
           <div class="row">
             <div class="col-md-6">
               <h2 class="mb-4">Searched posts </h2>
@@ -13,7 +13,7 @@
           <div class="row blog-entries">
             <div class="col-md-12 col-lg-8 main-content">
               <div class="row">
-                  @if(count($posts)!=0)
+                  
 
                 @foreach ($posts as $post)
                 
@@ -35,7 +35,15 @@
                 </div>
                 @endforeach
                 @else
-                <h2>Postu tokiu vardu nerasta</h2>
+                <div class="row">
+                  <div class="col-md-6">
+                    <h2 class="mb-4">Postu tokiu vardu nerasta </h2>
+                  </div>
+                </div>
+                <div class="row blog-entries">
+                  <div class="col-md-12 col-lg-8 main-content">
+                    <div class="row">
+                        
                 @endif
             
               </div>

@@ -25,3 +25,6 @@ Route::get('/create-category', 'CategoriesController@create');
 Route::post('/storeCategory', 'CategoriesController@storeCategory');
 Route::get('/category/{id}', 'PostController@category');
 
+Route::get('/comment-form/{post}', 'CommentController@add_comment');
+Route::post('comment-form/addcomment/{post}', 'CommentController@addcomment');
+

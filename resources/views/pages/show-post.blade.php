@@ -16,6 +16,20 @@
           
 
               </div>
+              <div style="margin-top:60px;">
+              <p><a href="/comment-form/{{$post->id}}" class="btn btn-primary btn-sm rounded">Add Comment</a></p>
+
+              <div>
+                @foreach ($comments as $comment)
+              <h3>{{$comment->user_id}}</h3>
+              <p>{{$comment->comment}}</p>
+              <p style="color:darkgray;font-size:13px;">{{$comment->created_at}}</p>
+                @endforeach
+                    
+              
+              </div>
+
+              </div>
 
 
 @endsection

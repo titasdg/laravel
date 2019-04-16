@@ -14,9 +14,9 @@
               
               <div class="col-3 search-top">
                 <!-- <a href="#"><span class="fa fa-search"></span></a> -->
-                <form action="search" method="POST" class="search-top-form">
+                <form action="search" method="GET" class="search-top-form">
+                  <button type ="submit" class="icon fa fa-search" style="height:37px;width:40px;margin-right:-16px;background-color:#6610f2;border-color:#6610f2;" name="submit"></button>
                   
-                  <a href="/search"><span class="icon fa fa-search"></span></a>
                   <input type="text" id="s" name="search" placeholder="Type keyword to search...">
                 </form>
               </div>
@@ -40,7 +40,7 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
               <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                  <a class="nav-link active" href="index.html">Home</a>
+                  <a class="nav-link active" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Business</a>
