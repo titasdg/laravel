@@ -65,6 +65,7 @@ class PostController extends Controller
             'content' => request('about'),
             'image' => $filename,
             'user_id' => auth()->user()->id,
+            'likes' =>0,
             'category_id' => request('category_id')
         ]);
 

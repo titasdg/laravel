@@ -22,6 +22,15 @@ h1, h2, h3, h4, h5 {
   color:white;
 text-align: center;
 }
+.navbar-nav .dropdown-menu{
+  transform: translateX(-50%)!important;
+  left: 50%!important;
+  top:80%!important;
+}
+.no-padding{
+  padding-left:0px!important;
+  padding-right: 0px!important;
+}
 
 
 
@@ -1156,7 +1165,7 @@ textarea.form-control {
   background: #212121;
   background: #510bc4;
   width: inherit;
-  min-width: 300px;
+  min-width: 200px;
   border: none;
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;

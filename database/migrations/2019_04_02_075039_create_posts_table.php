@@ -18,8 +18,10 @@ class CreatePostsTable extends Migration
             $table->string('user_id');
             $table->string('title');
             $table->text('content');
+            $table->bigInteger('likes');
             $table->integer('category_id');
             $table->string('image')->nullable();
+            
             $table->timestamps();
         });
     }

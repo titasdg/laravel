@@ -4,23 +4,24 @@
         <div class="top-bar">
           <div class="container">
             <div class="row">
-              <div class="col-6 social">
+              <div class="col-3 social">
                 <a href="#"><span class="fa fa-twitter"></span></a>
                 <a href="#"><span class="fa fa-facebook"></span></a>
                 <a href="#"><span class="fa fa-instagram"></span></a>
                 <a href="#"><span class="fa fa-youtube-play"></span></a>
                 
               </div>
-              <div class="col-3 ">
+              <div class="col-6 ">
               <ul class="navbar-nav ml-auto">
                 <div class="row">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item nav-item-color col-md-6">
+                            <li class="nav-item nav-item-color col-md-3 offset-md-3 no-padding">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item nav-item-color col-md-6">
+                                <li class="nav-item nav-item-color col-md-3 no-padding">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
@@ -54,7 +55,7 @@
                 <form action="search" method="GET" class="search-top-form">
                   <button type ="submit" class="icon fa fa-search" style="height:37px;width:40px;margin-right:-16px;background-color:#6610f2;border-color:#6610f2;" name="submit"></button>
                   
-                  <input type="text" id="s" name="search" placeholder="Type keyword to search...">
+                  <input type="text" id="s" name="search" placeholder="Search...">
                 </form>
               </div>
             </div>

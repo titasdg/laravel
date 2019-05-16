@@ -15,29 +15,16 @@ use App\Comment;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/post',function(){
-return Post::all();
+Route::get('/post','ApiController@get_all_posts');
 
-});
-Route::get('/category',function(){
-    return Category::all();
-    
-    });
-Route::get('/post/{id}',function($id){
-return Post::find($id);
-});
-Route::get('/post-by-category/{category_id}',function($category_id){
-    return Post::where('category_id',$category_id)->get();
-    });
+Route::get('/category','ApiController@get_all_categories');
 
-Route::get('/post-comments/{id}',function($id){
-    
-    $comments = Comment::where('post_id',$id)->select('comment','user_id')->get();
-    $post = Post::find($id);
+Route::get('/post/{id}','ApiController@get_posts_by_id');
 
-    return compact(['post','comments']);
-  
-    });
+
+Route::get('/post-by-category/{category_id}','ApiController@get_posts_by_category');
+
+Route::get('/post-comments/{id}','ApiController@get_post_with_comments');
 
 
 

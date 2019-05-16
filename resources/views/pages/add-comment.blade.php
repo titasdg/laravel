@@ -24,9 +24,7 @@
                         </ul>
                     </div>
                 @endif
-                        <fieldset >
-                                <input type="text" name="user" placeholder="user">
-                            </fieldset>
+                   
                             <fieldset >
                                 <textarea rows="5" cols="70" type="text" name="comment" placeholder="Text"></textarea>
                             </fieldset>

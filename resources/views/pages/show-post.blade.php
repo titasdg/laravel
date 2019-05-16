@@ -21,7 +21,7 @@
 
               <div>
                 @foreach ($comments as $comment)
-              <h3>{{$comment->user_id}}</h3>
+              <h3>{{$comment->name}}</h3>
               <p>{{$comment->comment}}</p>
               <p style="color:darkgray;font-size:13px;">{{$comment->created_at}}</p>
                 @endforeach

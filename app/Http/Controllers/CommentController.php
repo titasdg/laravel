@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CommentController extends Controller
 {
@@ -37,11 +38,12 @@ class CommentController extends Controller
     public function addcomment(Request $request,Post $post)
     {
         $validate=$request->validate([
-            'user'=>'required|max:255',
+          
             'comment'=>'required|max:1100'
         ]);
         $comment= Comment::create([
-            'user_id' => request('user'),
+            'name' => auth()->user()->name ,
+            'user_id' => auth()->user()->id,
             'post_id' => $post->id,
             'comment' => request('comment'),
 
@@ -52,7 +54,11 @@ class CommentController extends Controller
     }
     public function add_comment(Post $post)
     {
+        if(Gate::allows('edit-post',$post)){
         return view('pages.add-comment',compact('post'));
+        }
+        
+        return redirect('/login');
     }
 
     /**
