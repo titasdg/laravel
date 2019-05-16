@@ -7,8 +7,6 @@
        
           <div class="row">
             <div class="col-md-6">
-                <p><a href="/create-post" class="btn btn-primary btn-sm rounded">Create new post</a></p>
-                <p><a href="/create-category" class="btn btn-primary btn-sm rounded">Create new category</a></p>
               <h2 class="mb-4">Latest Posts </h2>
             </div>
           </div>
@@ -29,7 +27,7 @@
                         
                       </div>
                     <h2>{{Str::limit($post->title,20)}}</h2>
-                    <p><a href="/update-post/{{$post->id}}">Edit</a></p>
+                
                     </div>
                   </a>
                 </div>

@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'PostController@index');
+
+
 Route::get('/create-post', 'PostController@create_post');
 Route::post('/store', 'PostController@store');
 Route::get('/post/{post}', 'PostController@show_post');
@@ -31,4 +33,4 @@ Route::post('comment-form/addcomment/{post}', 'CommentController@addcomment');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index','PostController@show_posts_dasboard')->name('home');

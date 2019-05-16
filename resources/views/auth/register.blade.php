@@ -1,9 +1,14 @@
 @extends('main')
 
 @section('content')
+
+<div class="row blog-entries">
+    <div class="col-md-12 col-lg-8 main-content">
+      <div class="row">
+         
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
@@ -73,5 +78,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

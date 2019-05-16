@@ -9,6 +9,8 @@ use App\Comment;
 use File;
 use Illuminate\Support\Facades\Input;
 use View;
+use Illuminate\Support\Facades\Gate;
+
 class PostController extends Controller
 {
     public function index(){
@@ -26,16 +28,25 @@ class PostController extends Controller
         return view('pages.show-post',compact(['post','comments']));
         //return dd($comments);
     }
+
+
     public function create_post(){
         $category=Category::all();
         return view('pages.create-post',compact('category'));
 
     }
     public function delete_validation(Post $post){
+        if(Gate::allows('edit-post',$post)){
         return view('pages.delete-post',compact('post'));
     }
+    return redirect('/');
+    }
     public function update_post(Post $post){
-        return view('pages.update-post',compact('post'));
+        if(Gate::allows('edit-post',$post)){
+
+           return view('pages.update-post',compact('post')); 
+        }
+        return redirect('/');
     }
    
     public function store(Request $request){
@@ -53,10 +64,11 @@ class PostController extends Controller
             'title' => request('title'),
             'content' => request('about'),
             'image' => $filename,
+            'user_id' => auth()->user()->id,
             'category_id' => request('category_id')
         ]);
 
-        return redirect('/');
+        return redirect('/home');
        
     }
     public function store_update(Post $post,Request $request){
@@ -77,12 +89,17 @@ class PostController extends Controller
                         'image' =>$filename
                      ]); 
             }
-       return redirect('/');
+       return redirect('/home');
     }
     public function delete(Post $post)
     {
-        $post->delete();
-        return redirect('/');
+        if(Gate::allows('edit-post',$post)){
+
+            $post->delete();
+            return redirect('/home');
+         }
+         return redirect('/');
+      
     }
     public function search (Request $request){
        

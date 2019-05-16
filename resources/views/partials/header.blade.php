@@ -4,26 +4,28 @@
         <div class="top-bar">
           <div class="container">
             <div class="row">
-              <div class="col-7 social">
+              <div class="col-6 social">
                 <a href="#"><span class="fa fa-twitter"></span></a>
                 <a href="#"><span class="fa fa-facebook"></span></a>
                 <a href="#"><span class="fa fa-instagram"></span></a>
                 <a href="#"><span class="fa fa-youtube-play"></span></a>
                 
               </div>
-              <div class="col-2 ">
+              <div class="col-3 ">
               <ul class="navbar-nav ml-auto">
+                <div class="row">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item nav-item-color">
+                            <li class="nav-item nav-item-color col-md-6">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item nav-item-color">
+                                <li class="nav-item nav-item-color col-md-6">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
+                </div>
                             <li class="nav-item dropdown nav-item-color">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -35,6 +37,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <a class="dropdown-item" href="/home">Dashboard</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
