@@ -78,17 +78,17 @@ class PostController extends Controller
         'title'=>'required|max:255',
         'about'=>'required|max:1100',
         'category_id'=>'required',
-        'image'=>'mimes:jpeg,jpg,png,gif|required|max:10000'
+        //'image'=>'mimes:jpeg,jpg,png,gif|required|max:10000'
         
         ]);
-        $path=$request->file('image')->store('public/logos');
-        $filename=str_replace('public/',"",$path);
+        //$path=$request->file('image')->store('public/logos');
+        //$filename=str_replace('public/',"",$path);
         
          Post::create([
             'title' => request('title'),
             'content' => request('about'),
-            'image' => $filename,
-            'user_id' =>0,
+            'image' => "asd",
+            'user_id' =>1,
             'likes' =>0,
             'category_id' => request('category_id')
             ]);
@@ -119,16 +119,45 @@ class PostController extends Controller
             }
        return redirect('/home');
     }
+
+    public function update_post_api(Request $request){
+        /********   Not added photos    ******** */
+        $validate=$request->validate([
+            'title'=>'required|max:255',
+            'content'=>'required|max:1100',
+            //'image'=>'mimes:jpeg,jpg,png,gif|max:10000'
+
+        ]);
+       Post::where('id',$request->post_id)->update($request->only(['title','content']));
+       
+       /*if($request->hasFile('image'))
+            {
+                File::delete('storage/'.$post->image);
+                $path=$request->file('image')->store('public/logos');
+                $filename=str_replace('public/',"",$path);
+                    Post::where('id',$post->id)->update([
+                        'image' =>$filename
+                     ]); 
+            }*/
+       
+    }
+    /*************************************************************** */
     public function delete(Post $post)
     {
         if(Gate::allows('edit-post',$post)){
-
+            
             $post->delete();
             return redirect('/home');
-         }
-         return redirect('/');
-      
+        }
+        return redirect('/');
+        
     }
+    public function delete_post_api($id)
+    {
+            Post::find($id)->delete();
+            
+    }
+    /*************************************************************** */
     public function search (Request $request){
        
         $input = request::input('search');

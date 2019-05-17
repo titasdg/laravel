@@ -33,10 +33,13 @@ Route::get('/get-likes','ApiController@get_likes');
 
 Route::get('/add-like/{id}','ApiController@add_like');
 
+Route::get('/delete-post/{id}','PostController@delete_post_api');
+
 Route::post('/add-comment','CommentController@addcomment_api');
 
 Route::post('/add-post','PostController@store_post_api');
 
+Route::post('/update-post','PostController@update_post_api');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
