@@ -35,23 +35,46 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function addcomment(Request $request,Post $post)
+    /***************************************************************************** */
+    public function addcomment(Request $request)
     {
         $validate=$request->validate([
-          
+            
             'comment'=>'required|max:1100'
-        ]);
-        $comment= Comment::create([
-            'name' => auth()->user()->name ,
-            'user_id' => auth()->user()->id,
-            'post_id' => $post->id,
-            'comment' => request('comment'),
+            ]);
+            $comment= Comment::create([
+                'name' => auth()->user()->name ,
+                'user_id' => auth()->user()->id,
+                'post_id' => $post->id,
+                'comment' => request('comment'),
+                
+                
+                ]);
+                
+                return redirect('/post/'.$post->id);
+            }
 
-
-        ]);
-
-        return redirect('/post/'.$post->id);
-    }
+            
+            public function addcomment_api(Request $request)
+            {
+                $validate=$request->validate([
+                    
+                    'comment'=>'required|max:1100'
+                    ]);
+                    Comment::create([
+                        'name' => $request->name,
+                        'user_id' => 0,
+                        'post_id' => $request->post_id,
+                        'comment' => request('comment'),
+                        
+                        
+                        ]);
+                        
+                       return response()->json([
+                           'message'=>"success"
+                       ]); 
+                    }
+            /***************************************************************************** */
     public function add_comment(Post $post)
     {
         if(Gate::allows('edit-post',$post)){

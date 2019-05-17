@@ -26,6 +26,16 @@ Route::get('/post-by-category/{category_id}','ApiController@get_posts_by_categor
 
 Route::get('/post-comments/{id}','ApiController@get_post_with_comments');
 
+Route::get('/get-likes','ApiController@get_likes');
+
+
+
+
+Route::get('/add-like/{id}','ApiController@add_like');
+
+Route::post('/add-comment','CommentController@addcomment_api');
+
+Route::post('/add-post','PostController@store_post_api');
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

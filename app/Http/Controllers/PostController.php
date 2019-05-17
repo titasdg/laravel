@@ -48,30 +48,57 @@ class PostController extends Controller
         }
         return redirect('/');
     }
-   
-    public function store(Request $request){
-        $validate=$request->validate([
-            'title'=>'required|max:255',
-            'about'=>'required|max:1100',
-            'category_id'=>'required',
-            'image'=>'mimes:jpeg,jpg,png,gif|required|max:10000'
-
+   /********************************************************************************************************** */
+   public function store(Request $request){
+       $validate=$request->validate([
+           'title'=>'required|max:255',
+           'about'=>'required|max:1100',
+           'category_id'=>'required',
+           'image'=>'mimes:jpeg,jpg,png,gif|required|max:10000'
+           
+           ]);
+           $path=$request->file('image')->store('public/logos');
+           $filename=str_replace('public/',"",$path);
+           
+           $post= Post::create([
+               'title' => request('title'),
+               'content' => request('about'),
+               'image' => $filename,
+               'user_id' => auth()->user()->id,
+               'likes' =>0,
+               'category_id' => request('category_id')
+               ]);
+               
+               return redirect('/home');
+               
+            }
+            
+   public function store_post_api(Request $request){
+    $validate=$request->validate([
+        'title'=>'required|max:255',
+        'about'=>'required|max:1100',
+        'category_id'=>'required',
+        'image'=>'mimes:jpeg,jpg,png,gif|required|max:10000'
+        
         ]);
-            $path=$request->file('image')->store('public/logos');
-            $filename=str_replace('public/',"",$path);
-
-        $post= Post::create([
+        $path=$request->file('image')->store('public/logos');
+        $filename=str_replace('public/',"",$path);
+        
+         Post::create([
             'title' => request('title'),
             'content' => request('about'),
             'image' => $filename,
-            'user_id' => auth()->user()->id,
+            'user_id' =>0,
             'likes' =>0,
             'category_id' => request('category_id')
-        ]);
-
-        return redirect('/home');
-       
-    }
+            ]);
+            
+            return response()->json([
+                'message'=>"success"
+            ]); 
+            
+         }
+            /********************************************************************************************************** */
     public function store_update(Post $post,Request $request){
         $validate=$request->validate([
             'title'=>'required|max:255',

@@ -40,6 +40,12 @@ class ApiController extends Controller
             return compact(['post','comments']);
     }    
     /********************************************* */
+    public function add_like($id){
 
-
+        $post_likes=Post::find($id);
+        Post::where('id',$id)->update([
+                'likes' =>$post_likes->likes+1
+                ]);
+    }
+    /********************************************* */
 }
